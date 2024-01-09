@@ -244,3 +244,5 @@ paket-files/
 .idea/
 *.sln.iml
 /MoonsBakery/appsettings.Development.json
+/WoueShop/WoueShop/appsettings.Development.json
+/WoueShop/WoueShop.Client/wwwroot/appsettings.Development.json
