@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop", "WoueShop\WoueSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Client", "WoueShop\WoueShop.Client\WoueShop.Client.csproj", "{5C047EC6-4870-4FD7-8D0A-CBE8FA51DF89}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WouShop.Database", "WouShop.Database\WouShop.Database.csproj", "{41A4036B-102F-4C97-8445-561ECAF429B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Data", "WoueShop.Data\WoueShop.Data.csproj", "{41A4036B-102F-4C97-8445-561ECAF429B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D36C34A5-7C34-40C1-B656-03284C220358}"
 	ProjectSection(SolutionItems) = preProject

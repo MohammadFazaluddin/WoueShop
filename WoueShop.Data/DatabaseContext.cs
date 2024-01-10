@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WouShop.Database.Entities;
 
 namespace WouShop.Database
 {
@@ -10,6 +11,8 @@ namespace WouShop.Database
             
         }
 
+        public DbSet<Product> Products { get; set; }
 
+        public DbSet<Media> Media { get; set; }
     }
 }

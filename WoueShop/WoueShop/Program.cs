@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using WoueShop.Client.Pages;
 using WoueShop.Components;
+using WouShop.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")).UseSnakeCaseNamingConvention();
+});
 
 var app = builder.Build();
 
