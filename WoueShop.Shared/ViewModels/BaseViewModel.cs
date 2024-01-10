@@ -1,10 +1,8 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace WouShop.Database.Entities
+﻿namespace WoueShop.Shared.ViewModels
 {
-    public class BaseEntityModel
+    public class BaseViewModel
     {
-        public DateTime CreatedAt { get; set; } 
+        public DateTime CreatedAt { get; set; }
 
         public DateTime? ModifiedAt { get; set; }
 

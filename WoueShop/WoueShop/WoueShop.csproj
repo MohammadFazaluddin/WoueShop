@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\WoueShop.Data\WoueShop.Data.csproj" />
+    <ProjectReference Include="..\..\WoueShop.Shared\WoueShop.Shared.csproj" />
     <ProjectReference Include="..\WoueShop.Client\WoueShop.Client.csproj" />
     <PackageReference Include="EFCore.NamingConventions" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
@@ -16,6 +17,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
