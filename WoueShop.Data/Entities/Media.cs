@@ -1,4 +1,6 @@
-﻿namespace WouShop.Database.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WouShop.Database.Entities
 {
     public class Media : BaseEntityModel
     {
@@ -6,6 +8,7 @@
 
         public string Path { get; set; } = string.Empty;
 
+        [MaxLength(150)]
         public string ContentType { get; set; } = string.Empty;
     }
 }

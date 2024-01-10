@@ -1,9 +1,12 @@
-﻿namespace WouShop.Database.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WouShop.Database.Entities
 {
     public class Product : BaseEntityModel
     {
         public Guid Id { get; set; }
 
+        [MaxLength(450)]
         public string Name { get; set; } = string.Empty;
 
         public string? Description { get; set; }
