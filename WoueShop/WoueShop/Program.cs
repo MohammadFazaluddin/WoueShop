@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WoueShop.Client.Pages;
+using WoueShop.Client.Services;
 using WoueShop.Components;
 using WoueShop.Data;
 using WouShop.Database;
@@ -17,6 +18,11 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 });
 
 builder.Services.AddDataServices();
+
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<ProductAPIService>();
+
 
 builder.Services.AddControllers();
 

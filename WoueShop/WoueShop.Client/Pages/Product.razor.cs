@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using WoueShop.Client.Services;
 using WoueShop.Shared.ViewModels;
 
 namespace WoueShop.Client.Pages
@@ -8,16 +9,33 @@ namespace WoueShop.Client.Pages
         [Parameter]
         public ProductViewModel Model { get; set; }
 
+        [Inject]
+        ProductAPIService? ProductService { get; set; }
+
+        [Inject]
+        NavigationManager NavManager { get; set; }
+
         ProductViewModel EditModel { get; set; } = new();
 
         protected override void OnParametersSet()
         {
-            EditModel = Model;
+            if (Model != null)
+            {
+                EditModel = Model;
+            }
         }
 
         void HandleSubmit()
         {
+            Add();
+        }
 
+        async void Add()
+        {
+            var result = await ProductService!.Add(EditModel);
+
+            if (result)
+                NavManager.NavigateTo("/");
         }
     }
 }

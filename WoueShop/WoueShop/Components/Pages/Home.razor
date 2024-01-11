@@ -3,14 +3,21 @@
 
 @if (products != null)
 {
-    <ul>
-        @foreach (var product in products)
-        {
-            <li>
-                @product.Name - $ @product.Price
-            </li>
-        }
-    </ul>
+    if (products.Any())
+    {
+        <ul>
+            @foreach (var product in products)
+            {
+                <li>
+                    @product.Name - $ @product.Price
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <div>No products</div>
+    }
 }
 else
 {
