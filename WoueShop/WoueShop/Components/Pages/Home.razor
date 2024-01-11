@@ -1,5 +1,18 @@
 ﻿@page "/"
 
-<ul>
 
-</ul>
+@if (products != null)
+{
+    <ul>
+        @foreach (var product in products)
+        {
+            <li>
+                @product.Name - $ @product.Price
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <div>Not found</div>
+}

@@ -17,6 +17,6 @@ namespace WoueShop.Shared.ViewModels
 
         public bool? IsOurChoice { get; set; }
 
-        public ICollection<Media>? Media { get; set; } = null;
+        public ICollection<MediaViewModel>? Media { get; set; } = null;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace WouShop.Database.Entities
 {
-    public class Media : BaseEntityModel
+    public class MediaModel : BaseEntityModel
     {
         public int Id { get; set; }
 

@@ -11,14 +11,14 @@ namespace WouShop.Database
             
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductModel> Products { get; set; }
 
-        public DbSet<Media> Media { get; set; }
+        public DbSet<MediaModel> Media { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .Entity<Product>()
+                .Entity<ProductModel>()
                 .HasQueryFilter(e => e.DeletedAt != null);
 
             base.OnModelCreating(modelBuilder);

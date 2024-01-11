@@ -2,7 +2,7 @@
 
 namespace WouShop.Database.Entities
 {
-    public class Product : BaseEntityModel
+    public class ProductModel : BaseEntityModel
     {
         public Guid Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace WouShop.Database.Entities
 
         public bool? IsOurChoice { get; set; }
 
-        public ICollection<Media>? Media { get; set; } = null;
+        public ICollection<MediaModel>? Media { get; set; } = null;
 
     }
 }
