@@ -8,11 +8,11 @@ namespace WoueShop.Data.Repositories
 {
     public class ProductsRepository : IProductsRepository
     {
-        private readonly DatabaseContext _database;
+        private DatabaseContext _database;
 
         public ProductsRepository(DatabaseContext database)
         {
-            this._database = database;
+            _database = database;
         }
 
         public async Task<ProductModel?> Add(ProductModel product)
@@ -41,11 +41,9 @@ namespace WoueShop.Data.Repositories
 
         public async Task<IEnumerable<ProductModel>?> GetAll()
         {
-            var result = await _database.Products
-                                    .OrderBy(e => e.IsOurChoice)
-                                    .ToListAsync();
+            var result = _database.Products;
 
-            return result;
+            return await result.ToListAsync();
         }
 
         public async Task<ProductModel?> GetById(Guid id)

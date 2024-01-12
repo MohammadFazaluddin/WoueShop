@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WoueShop.Client.Services;
+using WoueShop.Data.Interfaces;
 using WoueShop.Shared.ViewModels;
+using WouShop.Database.Entities;
 
 namespace WoueShop.Client.Pages
 {
     public partial class Product : ComponentBase
     {
         [Parameter]
-        public ProductViewModel Model { get; set; }
+        public ProductModel Model { get; set; }
 
         [Inject]
-        ProductAPIService? ProductService { get; set; }
+        IProductsRepository? ProductService { get; set; }
 
         [Inject]
         NavigationManager NavManager { get; set; }
 
-        ProductViewModel EditModel { get; set; } = new();
+        ProductModel EditModel { get; set; } = new();
 
         protected override void OnParametersSet()
         {
@@ -34,7 +36,7 @@ namespace WoueShop.Client.Pages
         {
             var result = await ProductService!.Add(EditModel);
 
-            if (result)
+            if (result != null)
                 NavManager.NavigateTo("/");
         }
     }

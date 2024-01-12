@@ -19,10 +19,18 @@ namespace WoueShop.Components.Pages
 
         async Task GetAllProducts()
         {
-            var result = await ProductsRepository!.GetAll();
+            try
+            {
+                var result = await ProductsRepository!.GetAll();
 
-            products = result;
+                products = result;
 
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
             StateHasChanged();
         }
     }

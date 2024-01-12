@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using WoueShop.Data.Interfaces;
 using WouShop.Database.Entities;
 
@@ -24,7 +25,7 @@ namespace WoueShop.Controllers
 
             if (result == null || !result.Any())
             {
-                return NotFound("Not found");
+                return Problem("Not found", statusCode: StatusCodes.Status404NotFound);
             }
 
             return Ok(result);
@@ -33,12 +34,21 @@ namespace WoueShop.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProduct(ProductModel product)
         {
-            product.Id = Guid.NewGuid();
-            var result = await _productsRepository.Add(product);
+            try
+            {
 
-            return CreatedAtAction(nameof(GetProduct),
-                            new { id = product.Id },
-                            result);
+                product.Id = Guid.NewGuid();
+                var result = await _productsRepository.Add(product);
+
+                return CreatedAtAction(nameof(GetProduct),
+                                new { id = product.Id },
+                                result);
+            }
+            catch (Exception ex)
+            {
+
+                return Problem("Error");
+            }
         }
 
         [HttpGet("{id}")]
@@ -46,7 +56,7 @@ namespace WoueShop.Controllers
         {
             var product = await _productsRepository.GetById(id);
 
-            if(product == null)
+            if (product == null)
             {
                 return NotFound("Not found");
             }
