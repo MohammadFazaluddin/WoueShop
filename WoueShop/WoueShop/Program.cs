@@ -3,6 +3,8 @@ using WoueShop.Client.Pages;
 using WoueShop.Client.Services;
 using WoueShop.Components;
 using WoueShop.Data;
+using WoueShop.Data.Interfaces;
+using WoueShop.Data.Repositories;
 using WouShop.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,9 +21,12 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 
 builder.Services.AddDataServices();
 
-builder.Services.AddHttpClient();
+builder.Services.AddScoped(http => new HttpClient()
+{
+    BaseAddress = new Uri(builder.Configuration.GetSection("AppSettings")["BASE_ADDRESS"]! + "api/")
+});
 
-builder.Services.AddScoped<ProductAPIService>();
+builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 
 
 builder.Services.AddControllers();
