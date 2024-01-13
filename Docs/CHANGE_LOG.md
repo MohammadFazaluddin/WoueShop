@@ -1,6 +1,8 @@
 # 13/01/2024 
 - Changed the project structure switched to WebAssembly hosted application instead of default blazor web app template.
 - New APIs are working properly and need to implement UI from scratch now.
+- Using Tailwind for styling 
+- started working on UI.
 
 # 12/01/2024 
 - Working on Crud operation for Products, adding works, reading not working (Issue: no data found in dbContext).
