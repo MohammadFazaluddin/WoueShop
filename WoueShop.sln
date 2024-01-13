@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop", "WoueShop\WoueShop\WoueShop.csproj", "{827D8F0E-D78C-4622-8071-A096A0A7B55C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Client", "WoueShop\WoueShop.Client\WoueShop.Client.csproj", "{5C047EC6-4870-4FD7-8D0A-CBE8FA51DF89}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Data", "WoueShop.Data\WoueShop.Data.csproj", "{41A4036B-102F-4C97-8445-561ECAF429B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D36C34A5-7C34-40C1-B656-03284C220358}"
@@ -15,7 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoueShop.Shared", "WoueShop.Shared\WoueShop.Shared.csproj", "{C2186552-B4B8-4ACB-80DF-9E6908543CDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Shared", "WoueShop.Shared\WoueShop.Shared.csproj", "{C2186552-B4B8-4ACB-80DF-9E6908543CDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.API", "WoueShop.API\WoueShop.API.csproj", "{C9C39BAC-1C69-4215-BC30-29818E0B0063}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Web", "WoueShop.Web\WoueShop.Web.csproj", "{F07AD3DF-2732-4C36-A4E7-B01A0E12CFD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{827D8F0E-D78C-4622-8071-A096A0A7B55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{827D8F0E-D78C-4622-8071-A096A0A7B55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{827D8F0E-D78C-4622-8071-A096A0A7B55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{827D8F0E-D78C-4622-8071-A096A0A7B55C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C047EC6-4870-4FD7-8D0A-CBE8FA51DF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C047EC6-4870-4FD7-8D0A-CBE8FA51DF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C047EC6-4870-4FD7-8D0A-CBE8FA51DF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C047EC6-4870-4FD7-8D0A-CBE8FA51DF89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41A4036B-102F-4C97-8445-561ECAF429B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41A4036B-102F-4C97-8445-561ECAF429B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41A4036B-102F-4C97-8445-561ECAF429B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +31,14 @@ Global
 		{C2186552-B4B8-4ACB-80DF-9E6908543CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2186552-B4B8-4ACB-80DF-9E6908543CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2186552-B4B8-4ACB-80DF-9E6908543CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C39BAC-1C69-4215-BC30-29818E0B0063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C39BAC-1C69-4215-BC30-29818E0B0063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C39BAC-1C69-4215-BC30-29818E0B0063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C39BAC-1C69-4215-BC30-29818E0B0063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07AD3DF-2732-4C36-A4E7-B01A0E12CFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07AD3DF-2732-4C36-A4E7-B01A0E12CFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07AD3DF-2732-4C36-A4E7-B01A0E12CFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07AD3DF-2732-4C36-A4E7-B01A0E12CFD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

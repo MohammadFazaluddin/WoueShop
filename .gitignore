@@ -246,3 +246,4 @@ paket-files/
 /MoonsBakery/appsettings.Development.json
 /WoueShop/WoueShop/appsettings.Development.json
 /WoueShop/WoueShop.Client/wwwroot/appsettings.Development.json
+/WoueShop.API/appsettings.Development.json

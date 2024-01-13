@@ -19,7 +19,7 @@ namespace WouShop.Database
         {
             modelBuilder
                 .Entity<ProductModel>()
-                .HasQueryFilter(e => e.DeletedAt != null);
+                .HasQueryFilter(e => e.DeletedAt == null);
 
             base.OnModelCreating(modelBuilder);
         }

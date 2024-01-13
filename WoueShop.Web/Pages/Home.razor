@@ -1,0 +1,25 @@
+﻿@page "/"
+
+@if (products != null)
+{
+    if (products.Any())
+    {
+        <ul>
+            @foreach (var product in products)
+            {
+                <li>
+                    @product.Name - $ @product.Price 
+                    <p @onclick="() => DeleteProduct(product.Id)">Delete</p>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <div>No products</div>
+    }
+}
+else
+{
+    <div>Not found</div>
+}
