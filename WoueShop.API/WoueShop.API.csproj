@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\WoueShop.Data\WoueShop.Data.csproj" />
     <ProjectReference Include="..\WoueShop.Shared\WoueShop.Shared.csproj" />
-    <ProjectReference Include="..\WoueShop.Web\WoueShop.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>

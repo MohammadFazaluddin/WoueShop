@@ -1,0 +1,26 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+@if (products != null)
+{
+    if (products.Any())
+    {
+        <ul>
+            @foreach (var product in products)
+            {
+                <li>
+                    @product.Name - <s>$ @product.Price </s>
+
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <div>No products</div>
+    }
+}
+else
+{
+    <div>Not found</div>
+}

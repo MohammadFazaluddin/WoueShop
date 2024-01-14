@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WouShop.Database.Entities
 {
+    [Table(name: "Products")]
     public class ProductModel : BaseEntityModel
     {
         public Guid Id { get; set; }
