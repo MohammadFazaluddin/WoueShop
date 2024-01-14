@@ -1,10 +1,9 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WoueShop.Client.Pages;
 using WoueShop.Components;
 using WoueShop.Data;
 using WoueShop.Data.AuthEntities;
-using WoueShop.Data.Repositories.ProductRepositories;
+using WoueShop.Middlewares;
 using WouShop.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,8 +32,7 @@ builder.Services.AddScoped(http => new HttpClient()
     BaseAddress = new Uri(builder.Configuration.GetSection("AppSettings")["BASE_ADDRESS"]! + "api/")
 });
 
-builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
-
+builder.Services.RegisterAdmin();
 
 builder.Services.AddControllers();
 

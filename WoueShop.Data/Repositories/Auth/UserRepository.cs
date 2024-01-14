@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using WoueShop.Data.AuthEntities;
 using WoueShop.Shared.ReturnModels;
 using WouShop.Database;
@@ -16,10 +17,20 @@ namespace WoueShop.Data.Repositories.Auth
             _userManager = userManager;
         }
 
+        public async Task<IdentityResult> AssignRoleToUser(Guid userId, string role)
+        {
+            ApplicationUser user = await GetUserById(userId);
+
+            var result = await _userManager.AddToRoleAsync(user, role);
+
+            return result;
+        }
+
         public Task<IdentityResult?> CreateUser(UserInfoModel user)
         {
             var result = _userManager.CreateAsync(new()
                         {
+                            Id = user.Id,
                             Email = user.Email,
                             UserName = user.Email,
                             FullName = user.Name,
@@ -46,6 +57,13 @@ namespace WoueShop.Data.Repositories.Auth
         public Task<ApplicationUser> GetUserById(Guid userid)
         {
             throw new NotImplementedException();
+        }
+
+        public bool IsUniqueEmail(string email)
+        {
+            var result = _database.Users.Any(e => e.Email.ToLower().Equals(email));
+
+            return result;
         }
 
         public Task<IdentityResult> Update(Guid userId, ApplicationUser user)

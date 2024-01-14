@@ -24,3 +24,6 @@
 - Working on Authentication and Authorization for the application. (using Identity)
 - Added Identity tables.
 - Started working on User management.
+- Set up the result pattern and Proper Api Exception response using result pattern.
+- Custom Error class implementation.
+- Result Class implementation

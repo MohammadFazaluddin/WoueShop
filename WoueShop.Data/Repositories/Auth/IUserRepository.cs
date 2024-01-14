@@ -10,12 +10,16 @@ namespace WoueShop.Data.Repositories.Auth
 
         Task<IdentityResult?> Update(Guid userId, ApplicationUser user);
 
-        Task<IdentityResult?> DeleteUserById(Guid userid);
+        Task<IdentityResult?> DeleteUserById(Guid userId);
 
         Task<IEnumerable<ApplicationUser>?> GetAllUsers();
 
-        Task<ApplicationUser?> GetUserById(Guid userid);
+        Task<ApplicationUser?> GetUserById(Guid userId);
 
         Task<ApplicationUser?> GetUserByEmail(string email);
+
+        bool IsUniqueEmail(string email);
+
+        Task<IdentityResult> AssignRoleToUser(Guid userId, string role);
     }
 }
