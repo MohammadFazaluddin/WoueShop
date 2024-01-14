@@ -1,6 +1,6 @@
 ﻿using WouShop.Database.Entities;
 
-namespace WoueShop.Data.Interfaces
+namespace WoueShop.Data.Repositories.Product
 {
     public interface IProductsRepository
     {

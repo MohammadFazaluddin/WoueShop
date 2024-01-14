@@ -22,3 +22,5 @@
 
 # 14/01/2024 
 - Working on Authentication and Authorization for the application. (using Identity)
+- Added Identity tables.
+- Started working on User management.

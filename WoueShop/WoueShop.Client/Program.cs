@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using WoueShop.Client.Services;
-using WoueShop.Data.Interfaces;
+using WoueShop.Data.Repositories.ProductRepositories;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 

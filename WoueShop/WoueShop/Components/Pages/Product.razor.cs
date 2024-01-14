@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using WoueShop.Data.Interfaces;
+using WoueShop.Data.Repositories.ProductRepositories;
 using WouShop.Database.Entities;
 
 namespace WoueShop.Components.Pages

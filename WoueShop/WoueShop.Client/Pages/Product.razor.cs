@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using WoueShop.Client.Services;
-using WoueShop.Data.Interfaces;
+using WoueShop.Data.Repositories.ProductRepositories;
 using WoueShop.Shared.ViewModels;
 using WouShop.Database.Entities;
 

@@ -1,5 +1,5 @@
 ﻿using System.Net.Http.Json;
-using WoueShop.Data.Interfaces;
+using WoueShop.Data.Repositories.ProductRepositories;
 using WoueShop.Shared.ViewModels;
 using WouShop.Database.Entities;
 

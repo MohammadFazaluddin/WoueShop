@@ -1,9 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WoueShop.Data.Interfaces;
-using WoueShop.Data.Repositories;
-using WouShop.Database;
+using WoueShop.Data.Repositories.Product;
 
 namespace WoueShop.Data
 {

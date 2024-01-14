@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using WoueShop.Data.Interfaces;
+using WoueShop.Data.Repositories.ProductRepositories;
 using WouShop.Database.Entities;
 
 namespace WoueShop.Controllers

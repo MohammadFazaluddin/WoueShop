@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop", "WoueShop\WoueSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WoueShop.Client", "WoueShop\WoueShop.Client\WoueShop.Client.csproj", "{CC7E4D79-FD4A-4828-B52E-0AAA930140BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoueShop.Application", "WoueShop.Application\WoueShop.Application.csproj", "{5B697D56-53C1-4328-8FBD-00089C115611}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CC7E4D79-FD4A-4828-B52E-0AAA930140BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC7E4D79-FD4A-4828-B52E-0AAA930140BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC7E4D79-FD4A-4828-B52E-0AAA930140BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B697D56-53C1-4328-8FBD-00089C115611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B697D56-53C1-4328-8FBD-00089C115611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B697D56-53C1-4328-8FBD-00089C115611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B697D56-53C1-4328-8FBD-00089C115611}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

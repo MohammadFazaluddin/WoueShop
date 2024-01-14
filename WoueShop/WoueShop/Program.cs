@@ -4,8 +4,7 @@ using WoueShop.Client.Pages;
 using WoueShop.Components;
 using WoueShop.Data;
 using WoueShop.Data.AuthEntities;
-using WoueShop.Data.Interfaces;
-using WoueShop.Data.Repositories;
+using WoueShop.Data.Repositories.ProductRepositories;
 using WouShop.Database;
 
 var builder = WebApplication.CreateBuilder(args);

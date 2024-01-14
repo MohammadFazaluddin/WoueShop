@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata.Ecma335;
-using WoueShop.Data.Interfaces;
 using WouShop.Database;
 using WouShop.Database.Entities;
 
-namespace WoueShop.Data.Repositories
+namespace WoueShop.Data.Repositories.Product
 {
     public class ProductsRepository : IProductsRepository
     {
@@ -27,7 +26,7 @@ namespace WoueShop.Data.Repositories
         {
             var entity = await GetById(id);
 
-            if(entity == null)
+            if (entity == null)
             {
                 return null;
             }
@@ -57,7 +56,7 @@ namespace WoueShop.Data.Repositories
         {
             var entity = await GetById(id);
 
-            if(entity == null)
+            if (entity == null)
             {
                 return null;
             }

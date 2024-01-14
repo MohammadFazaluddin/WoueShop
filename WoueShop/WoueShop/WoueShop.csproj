@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\WoueShop.Application\WoueShop.Application.csproj" />
     <ProjectReference Include="..\..\WoueShop.Data\WoueShop.Data.csproj" />
     <ProjectReference Include="..\..\WoueShop.Shared\WoueShop.Shared.csproj" />
     <ProjectReference Include="..\WoueShop.Client\WoueShop.Client.csproj" />
@@ -17,6 +18,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Auth\" />
   </ItemGroup>
 
 </Project>
