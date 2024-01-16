@@ -30,20 +30,6 @@ namespace WouShop.Database
                 .Entity<ProductModel>()
                 .HasQueryFilter(e => e.DeletedAt == null);
 
-            modelBuilder
-                .Entity<ApplicationUser>()
-                .HasData(new[]
-            {
-                new ApplicationUser()
-                {
-                    Id = new Guid("60ba025e-e63a-4bea-8469-4a8fb0cda8d5"),
-                    FullName = "Admin",
-                    Email = "admin@woue.com",
-                    UserName = "SuperAdmin",
-                    PasswordHash = 
-                }
-            });
-
             base.OnModelCreating(modelBuilder);
         }
     }

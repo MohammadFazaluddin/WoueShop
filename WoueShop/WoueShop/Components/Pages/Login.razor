@@ -1,0 +1,42 @@
+﻿@page "/signin"
+
+<PageTitle>Woue shop</PageTitle>
+
+<EditForm Model="userModel" OnValidSubmit="HandleLogin"
+          class="flex item-center mx-auto h-50 border-1 rounded">
+    <DataAnnotationsValidator />
+    <div>
+        
+        <h1>Sign in</h1>
+        <p>to continue to Woue shop</p>
+
+        <div>
+            @errorMessage
+            <ValidationSummary role="alert" />
+        </div>
+
+        <div>
+            <label for="email">
+                Email
+                <InputText id="email" @bind-Value="@userModel.Email" />
+                <ValidationMessage For="() => userModel.Email" />
+            </label>
+        </div>
+
+        <div>
+            <label for="password">
+                Password
+                <InputText id="password" type="password" @bind-Value="@userModel.Password" />
+                <ValidationMessage For="() => userModel.Password" />
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <InputCheckbox @bind-Value="@userModel.RememberMe" />
+                Remember me
+            </label>
+        </div>
+    </div>
+
+</EditForm>

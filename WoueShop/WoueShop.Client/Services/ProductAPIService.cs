@@ -1,11 +1,9 @@
 ﻿using System.Net.Http.Json;
-using WoueShop.Data.Repositories.ProductRepositories;
 using WoueShop.Shared.ViewModels;
-using WouShop.Database.Entities;
 
 namespace WoueShop.Client.Services
 {
-    public class ProductAPIService : IProductsRepository
+    public class ProductAPIService
     {
         private readonly HttpClient httpClient;
 
@@ -14,31 +12,17 @@ namespace WoueShop.Client.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<ProductModel?> Add(ProductModel product)
+        public async Task<IEnumerable<ProductViewModel>?> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<ProductModel?> DeleteById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<ProductModel>?> GetAll()
-        {
-            var result = await httpClient.GetFromJsonAsync<IEnumerable<ProductModel>>("products");
+            var result = await httpClient.GetFromJsonAsync<IEnumerable<ProductViewModel>>("products");
 
             return result;
         }
 
-        public Task<ProductModel?> GetById(Guid id)
+        public Task<ProductViewModel?> GetById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ProductModel?> Update(Guid id, ProductModel product)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

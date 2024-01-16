@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WoueShop.Client.Pages;
 using WoueShop.Components;
@@ -13,6 +15,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+#region Database Services
+
 builder.Services.AddDbContextPool<DatabaseContext>(options =>
 {
     options.UseNpgsql(
@@ -21,21 +25,40 @@ builder.Services.AddDbContextPool<DatabaseContext>(options =>
              .UseSnakeCaseNamingConvention();
 });
 
-builder.Services
-    .AddIdentity<ApplicationUser, ApplicationRole>()
-    .AddEntityFrameworkStores<DatabaseContext>();
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = IdentityConstants.ApplicationScheme;
+        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+    }).AddCookie(options =>
+    {
+        options.LoginPath = "/signin";
+    });
+//.AddIdentityCookies();
 
-builder.Services.AddDataServices();
+builder.Services
+    .AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<DatabaseContext>()
+    .AddSignInManager()
+    .AddDefaultTokenProviders();
+
+#endregion
+
+#region Common Services
 
 builder.Services.AddScoped(http => new HttpClient()
-{
-    BaseAddress = new Uri(builder.Configuration.GetSection("AppSettings")["BASE_ADDRESS"]! + "api/")
-});
+    {
+        BaseAddress = new Uri(builder.Configuration.GetSection("AppSettings")["BASE_ADDRESS"]! + "api/")
+    });
+
+builder.Services.AddDataServices();
 
 builder.Services.RegisterAdmin();
 
 builder.Services.AddControllers();
 
+#endregion
+
+#region Request Response Pipeline
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,6 +77,9 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseStaticFiles();
 app.UseAntiforgery();
 
@@ -63,3 +89,4 @@ app.MapRazorComponents<App>()
     .AddAdditionalAssemblies(typeof(Home).Assembly);
 
 app.Run();
+#endregion

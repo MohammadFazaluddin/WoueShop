@@ -1,16 +1,18 @@
 ﻿@page "/"
-@rendermode InteractiveServer
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
+Hello world
 @if (products != null)
 {
+    <div>Hii.....</div>
     if (products.Any())
     {
         <ul>
+            
             @foreach (var product in products)
             {
                 <li>
-                    @product.Name - <s>$ @product.Price </s>
-
+                    @product.Name - <s>$ @product.Price </s> $ @product.DiscountedPrice
                 </li>
             }
         </ul>

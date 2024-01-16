@@ -22,7 +22,7 @@ namespace WoueShop.Application.Auth
                 return Result.Failure<Guid>(UserErrors.EmailAlreadyExists);
             }
 
-            userInfo.Id = Guid.NewGuid();
+            userInfo.UserId = Guid.NewGuid();
 
             var addUser = await _userRepository.CreateUser(userInfo);
 
@@ -36,7 +36,7 @@ namespace WoueShop.Application.Auth
                 return Result.Failure<Guid>(UserErrors.AccountFailure);
             }
 
-            var assignRole = await _userRepository.AssignRoleToUser(userInfo.Id, role);
+            var assignRole = await _userRepository.AssignRoleToUser(userInfo.UserId, role);
 
             if (assignRole == null)
             {
@@ -48,7 +48,7 @@ namespace WoueShop.Application.Auth
                 return Result.Failure<Guid>(UserErrors.RoleFailure);
             }
 
-            return userInfo.Id;
+            return userInfo.UserId;
         }
 
     }

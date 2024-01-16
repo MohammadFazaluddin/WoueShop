@@ -9,8 +9,6 @@ public sealed record Error
 
     public static readonly Error NullValue = new("Null Value", "Null value was provided", ErrorType.Failure);
 
-    public static implicit operator Result(Error error) => Result.Failure(error);
-
     public string Code { get; }
 
     public string Description { get; }

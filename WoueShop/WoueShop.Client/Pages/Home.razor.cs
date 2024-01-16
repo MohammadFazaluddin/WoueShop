@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
-using WoueShop.Data.Repositories.ProductRepositories;
+using WoueShop.Client.Services;
 using WoueShop.Shared.ViewModels;
-using WouShop.Database.Entities;
 
 namespace WoueShop.Client.Pages
 {
     public partial class Home : ComponentBase
     {
         [Inject]
-        IProductsRepository? ProductsService { get; set; }
+        ProductAPIService? ProductsService { get; set; }
 
-        IEnumerable<ProductModel> products;
+        IEnumerable<ProductViewModel> products;
 
         protected override async Task OnInitializedAsync()
         {

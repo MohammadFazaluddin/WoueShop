@@ -30,7 +30,7 @@ namespace WoueShop.Data.Repositories.Auth
         {
             var result = _userManager.CreateAsync(new()
                         {
-                            Id = user.Id,
+                            Id = user.UserId,
                             Email = user.Email,
                             UserName = user.Email,
                             FullName = user.Name,

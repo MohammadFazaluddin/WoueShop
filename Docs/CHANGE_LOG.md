@@ -27,3 +27,9 @@
 - Set up the result pattern and Proper Api Exception response using result pattern.
 - Custom Error class implementation.
 - Result Class implementation
+
+# 17/01/2024
+- Working on Authentication and Authorization.
+- Created a login page.
+- made user sign in handler to login from backend front end needs some work.
+- On authorization there seem to be an issue that I can't seem to have found the solution to use a different URL then default one ('Accounts/login?ReturnUrl')
