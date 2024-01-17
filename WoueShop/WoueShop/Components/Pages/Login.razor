@@ -1,8 +1,8 @@
-﻿@page "/signin"
+﻿@page "/account/login"
 
 <PageTitle>Woue shop</PageTitle>
 
-<EditForm Model="userModel" OnValidSubmit="HandleLogin"
+<EditForm Model="userModel" OnValidSubmit="LoginInUser" FormName="UserLogin"
           class="flex item-center mx-auto h-50 border-1 rounded">
     <DataAnnotationsValidator />
     <div>
@@ -10,7 +10,7 @@
         <h1>Sign in</h1>
         <p>to continue to Woue shop</p>
 
-        <div>
+        <div style="color:red;">
             @errorMessage
             <ValidationSummary role="alert" />
         </div>
@@ -36,6 +36,10 @@
                 <InputCheckbox @bind-Value="@userModel.RememberMe" />
                 Remember me
             </label>
+        </div>
+
+        <div>
+            <button>Sign In</button>
         </div>
     </div>
 

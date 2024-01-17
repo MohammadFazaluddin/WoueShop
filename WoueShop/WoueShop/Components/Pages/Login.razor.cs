@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Xml;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
 using WoueShop.Application.Auth;
+using WoueShop.Client.AuthUtility;
+using WoueShop.Data.AuthEntities;
+using WoueShop.Shared.ReturnModels;
 using WoueShop.Shared.ViewModels;
 
 namespace WoueShop.Components.Pages
@@ -8,31 +13,74 @@ namespace WoueShop.Components.Pages
     public partial class Login : ComponentBase
     {
         [Inject]
-        SignInhandler? SignInhandler { get; set; }
-
-        [Inject]
         NavigationManager? NavManager { get; set; }
 
-        [SupplyParameterFromQuery]
-        private string? ReturnUrl { get; set; }
+        [Inject]
+        UserManager<ApplicationUser> UserManager { get; set; }
 
+        [Inject]
+        SignInManager<ApplicationUser> SingInManager { get; set; }
+
+        [Inject]
+        AuthenticationStateProvider AuthStateProvider { get; set; }
+
+        [SupplyParameterFromQuery]
+        private string? ReturnUrl { get; set; } = "/";
+
+        [CascadingParameter]
+        HttpContext HttpContext { get; set; }
+
+        [SupplyParameterFromForm]
         UserLoginModel userModel { get; set; } = new();
 
         string errorMessage = string.Empty;
 
-        async void HandleLogin()
+        protected override async Task OnInitializedAsync()
         {
-            var signIn = await SignInhandler!.LoginInUser(userModel);
+            if (HttpMethods.IsGet(HttpContext.Request.Method))
+            {
+                await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            }
+        }
 
-            if (!signIn.IsSuccess)
+        public async Task LoginInUser()
+        {
+            var user = await UserManager.FindByEmailAsync(userModel.Email);
+
+            if (user is null)
             {
-                errorMessage = signIn.Error.Description;
+                errorMessage = UserErrors.InvalidEmail.Description;
+                return;
             }
-            else if (signIn.IsSuccess)
+
+            var signIn = await SingInManager.PasswordSignInAsync(user, userModel.Password, userModel.RememberMe, false);
+
+            if (!signIn.Succeeded)
             {
-                errorMessage = string.Empty;
-                NavManager!.NavigateTo(ReturnUrl);
+                errorMessage = UserErrors.InvalidPassword.Description;
+                return;
             }
+
+            errorMessage = string.Empty;
+
+            if (!Uri.IsWellFormedUriString(ReturnUrl, UriKind.Relative))
+            {
+                ReturnUrl = NavManager.ToBaseRelativePath(ReturnUrl);
+            }
+
+            var auth = (AppAuthenticationStateProvider)AuthStateProvider;
+
+            UserInfoModel userInfo = new()
+            {
+                Email = user.Email,
+                Name = user.FullName,
+                UserId = user.Id,
+            };
+
+            await auth.UpdateAuthenticationStateAsync(userInfo);
+
+            NavManager!.NavigateTo(ReturnUrl);
+
 
         }
     }

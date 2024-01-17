@@ -9,10 +9,12 @@ namespace WouShop.Database.Entities
         public Guid Id { get; set; }
 
         [MaxLength(450)]
+        [Required]
         public string Name { get; set; } = string.Empty;
 
         public string? Description { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
 
         public decimal? DiscountedPrice { get; set; }

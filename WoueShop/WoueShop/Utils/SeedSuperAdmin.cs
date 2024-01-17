@@ -32,7 +32,9 @@ namespace WoueShop.Middlewares
             }
 
             //IF SUPER ADMIN DOES NOT EXISTS CREATE USER BY NAME SUPERADMIN
-            if(!database.Users.Any(e => e.UserName.ToLower() == "superadmin"))
+            var superadminUser = database.Users.Any(e => e.UserName.ToLower() == "superadmin");
+
+            if (!superadminUser)
             {
                 var adminUser = new ApplicationUser()
                 {

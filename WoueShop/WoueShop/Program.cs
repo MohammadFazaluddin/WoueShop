@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using WoueShop.Application;
+using WoueShop.Client.AuthUtility;
 using WoueShop.Client.Pages;
 using WoueShop.Components;
 using WoueShop.Data;
@@ -15,6 +18,20 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+#region Authentication 
+builder.Services.AddCascadingAuthenticationState();
+
+builder.Services.AddScoped<AuthenticationStateProvider, AppAuthenticationStateProvider>();
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = IdentityConstants.ApplicationScheme;
+        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+    })
+    .AddIdentityCookies();
+
+#endregion
+
 #region Database Services
 
 builder.Services.AddDbContextPool<DatabaseContext>(options =>
@@ -25,18 +42,10 @@ builder.Services.AddDbContextPool<DatabaseContext>(options =>
              .UseSnakeCaseNamingConvention();
 });
 
-builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultScheme = IdentityConstants.ApplicationScheme;
-        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-    }).AddCookie(options =>
-    {
-        options.LoginPath = "/signin";
-    });
-//.AddIdentityCookies();
 
 builder.Services
-    .AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddIdentityCore<ApplicationUser>()
+    .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
@@ -53,6 +62,7 @@ builder.Services.AddScoped(http => new HttpClient()
 builder.Services.AddDataServices();
 
 builder.Services.RegisterAdmin();
+builder.Services.AddApplicationServices();
 
 builder.Services.AddControllers();
 
@@ -76,9 +86,6 @@ else
 app.UseHttpsRedirection();
 
 app.MapControllers();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.UseStaticFiles();
 app.UseAntiforgery();

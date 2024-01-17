@@ -8,7 +8,6 @@ namespace WoueShop.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<UsersHandlerService>();
-            services.AddScoped<SignInhandler>();
 
             return services;
         }

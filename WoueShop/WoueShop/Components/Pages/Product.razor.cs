@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using WoueShop.Client.AuthUtility;
 using WoueShop.Data.Repositories.Product;
 using WouShop.Database.Entities;
 
@@ -16,6 +18,21 @@ namespace WoueShop.Components.Pages
         NavigationManager NavManager { get; set; }
 
         ProductModel EditModel { get; set; } = new();
+
+        [Inject]
+        AuthenticationStateProvider AuthStateProvider { get; set; }
+
+        string authuser = string.Empty;
+        bool authorized = false;
+        protected override async Task OnInitializedAsync()
+        {
+            var auth = await AuthStateProvider.GetAuthenticationStateAsync();
+
+            authorized = auth.User.Identity.IsAuthenticated;
+            authuser = auth.User.Identity.Name;
+
+            base.OnInitializedAsync();
+        }
 
         protected override void OnParametersSet()
         {

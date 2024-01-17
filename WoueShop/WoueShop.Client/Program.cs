@@ -10,9 +10,8 @@ builder.Services.AddScoped(http => new HttpClient()
     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress + "api/")
 });
 
-
-builder.Services.AddAuthorizationCore()
-    .AddCascadingAuthenticationState();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddCascadingAuthenticationState();
 
 builder.Services.AddScoped<ProductAPIService>();
 builder.Services.AddSingleton<AuthenticationStateProvider, AppAuthenticationStateProvider>();
