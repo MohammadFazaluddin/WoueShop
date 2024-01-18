@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using WoueShop.Client.Models;
 using WoueShop.Shared.ReturnModels;
 
 namespace WoueShop.Client.AuthUtility
@@ -11,45 +10,58 @@ namespace WoueShop.Client.AuthUtility
         private static readonly Task<AuthenticationState> defaultUnAuthenticatedTask =
             Task.FromResult(new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity())));
 
-        private Task<AuthenticationState> authenticationStateTask = defaultUnAuthenticatedTask;
+        private static Task<AuthenticationState> authenticationStateTask = defaultUnAuthenticatedTask;
 
-        public AppAuthenticationStateProvider(PersistentComponentState state)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public AppAuthenticationStateProvider(IHttpContextAccessor httpContextAccessor)
         {
-            if (!state.TryTakeFromJson<UserInfo>(nameof(UserInfo), out var userInfo) || userInfo is null)
-            {
-                return;
-            }
-
-            Claim[] claims =
-            [
-                new Claim(ClaimTypes.NameIdentifier, userInfo.UserId),
-                new Claim(ClaimTypes.Name, userInfo.Email),
-                new Claim(ClaimTypes.Email, userInfo.Email)
-            ];
-
-            authenticationStateTask = Task.FromResult(
-                new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims, 
-                nameof(AppAuthenticationStateProvider)))));
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public override Task<AuthenticationState> GetAuthenticationStateAsync() => authenticationStateTask;
-
-        public Task UpdateAuthenticationStateAsync(UserInfoModel userInfo)
+        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            Claim[] claims =
-            [
-                new Claim(ClaimTypes.NameIdentifier, userInfo.UserId.ToString()),
-                new Claim(ClaimTypes.Name, userInfo.Email),
-                new Claim(ClaimTypes.Email, userInfo.Email)
-            ];
+
+            if (_httpContextAccessor.HttpContext.User.Identity is null)
+            {
+                return await authenticationStateTask;
+            }
+
+            if (!_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                authenticationStateTask = defaultUnAuthenticatedTask;
+                return await authenticationStateTask;
+            }
+
+            var claims = _httpContextAccessor.HttpContext.User.Claims;
 
             authenticationStateTask = Task.FromResult(
                 new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims,
-                authenticationType: nameof(AppAuthenticationStateProvider)))));
+                authenticationType: "Identity.Application"))));
+
+            return await authenticationStateTask;
+        }
+
+        public void NotifyAuthenticationStateChanged()
+        {
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
+
+        public async Task UpdateAuthenticationStateAsync(UserInfoModel userInfo)
+        {
+            Claim[] claims =
+                [
+                    new Claim(ClaimTypes.NameIdentifier, userInfo.UserId.ToString()),
+                    new Claim(ClaimTypes.Name, userInfo.Email),
+                    new Claim(ClaimTypes.Email, userInfo.Email)
+                ];
+
+            authenticationStateTask = Task.FromResult(
+                new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims,
+                authenticationType: "Identity.Application"))));
 
             NotifyAuthenticationStateChanged(authenticationStateTask);
 
-            return Task.FromResult(authenticationStateTask);
         }
 
     }

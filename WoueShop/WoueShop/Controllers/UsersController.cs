@@ -7,7 +7,7 @@ using WoueShop.Shared.ReturnModels;
 
 namespace WoueShop.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {

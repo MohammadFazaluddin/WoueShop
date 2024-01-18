@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +5,7 @@ using WoueShop.Application;
 using WoueShop.Client.AuthUtility;
 using WoueShop.Client.Pages;
 using WoueShop.Components;
+using WoueShop.Controllers;
 using WoueShop.Data;
 using WoueShop.Data.AuthEntities;
 using WoueShop.Middlewares;
@@ -22,6 +22,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddCascadingAuthenticationState();
 
 builder.Services.AddScoped<AuthenticationStateProvider, AppAuthenticationStateProvider>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(options =>
     {
@@ -34,7 +35,7 @@ builder.Services.AddAuthentication(options =>
 
 #region Database Services
 
-builder.Services.AddDbContextPool<DatabaseContext>(options =>
+builder.Services.AddDbContext<DatabaseContext>(options =>
 {
     options.UseNpgsql(
         builder.Configuration
@@ -94,6 +95,8 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Home).Assembly);
+
+app.MapAuthEndpoints();
 
 app.Run();
 #endregion

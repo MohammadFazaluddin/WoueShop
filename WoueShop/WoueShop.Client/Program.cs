@@ -16,4 +16,6 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<ProductAPIService>();
 builder.Services.AddSingleton<AuthenticationStateProvider, AppAuthenticationStateProvider>();
 
+builder.Services.AddHttpContextAccessor();
+
 await builder.Build().RunAsync();

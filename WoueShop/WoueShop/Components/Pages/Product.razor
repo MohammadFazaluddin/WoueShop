@@ -5,14 +5,8 @@
 <PageTitle>Product</PageTitle>
 <h1>Product Entry</h1>
 
-<div>
-    authorized: @authorized
-    username: @authuser
-</div>
-
-<AuthorizeView Roles="Admin" Context="product">
-
-    <EditForm Model="@EditModel" OnValidSubmit="HandleSubmit">
+<AuthorizeView>
+    <EditForm Model="@EditModel" OnValidSubmit="HandleSubmit" Context="productform">
         <div>
             <div>
                 <label for="name">Name</label>

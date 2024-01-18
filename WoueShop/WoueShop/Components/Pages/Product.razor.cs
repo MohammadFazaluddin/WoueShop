@@ -22,15 +22,18 @@ namespace WoueShop.Components.Pages
         [Inject]
         AuthenticationStateProvider AuthStateProvider { get; set; }
 
-        string authuser = string.Empty;
-        bool authorized = false;
+        [CascadingParameter]
+        HttpContext HttpContext { get; set; }
+
+        string authuser = "no user";
+        bool? authorized = null;
         protected override async Task OnInitializedAsync()
         {
             var auth = await AuthStateProvider.GetAuthenticationStateAsync();
 
             authorized = auth.User.Identity.IsAuthenticated;
             authuser = auth.User.Identity.Name;
-
+            StateHasChanged();
             base.OnInitializedAsync();
         }
 

@@ -34,7 +34,14 @@
 - made user sign in handler to login from backend front end needs some work.
 - On authorization there seem to be an issue that I can't seem to have found the solution to use a different URL then default one ('Accounts/login?ReturnUrl')
 
-# 18/01/2024
+# 17/01/2024
 - Got the Authorization working Sign in Successfully.
 - User still remains registered as Unauthorized even after the Cookie successfully being stored. need to fix this first.
 - Needs to start working on Login page UI design.
+
+# 18/01/2024
+- User Authentication and Authorization implementation complete
+- user Authentication works with Remember me feature.
+- user sign in complete.
+- Authentication is based on Cookie authentication.
+- Sign in and Signout implemented on UI aswell.

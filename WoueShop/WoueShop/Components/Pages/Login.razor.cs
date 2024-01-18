@@ -78,6 +78,8 @@ namespace WoueShop.Components.Pages
             };
 
             await auth.UpdateAuthenticationStateAsync(userInfo);
+            
+            //auth.NotifyAuthenticationStateChanged();
 
             NavManager!.NavigateTo(ReturnUrl);
 
