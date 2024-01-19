@@ -5,11 +5,11 @@ namespace WoueShop.Shared.ViewModels
 {
     public sealed class UserLoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Invalid email address")]
         [EmailAddress]
         public string Email { get; set; } = "";
 
-        [Required]
+        [Required(ErrorMessage = "Enter password")]
         [DataType(DataType.Password)]
         public string Password { get; set; } = "";
 

@@ -45,3 +45,6 @@
 - user sign in complete.
 - Authentication is based on Cookie authentication.
 - Sign in and Signout implemented on UI aswell.
+
+# 20/01/2024 
+- Added Ui design for login page.

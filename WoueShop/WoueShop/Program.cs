@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using WoueShop.Application;
 using WoueShop.Client.AuthUtility;
 using WoueShop.Client.Pages;
+using WoueShop.Client.Services;
 using WoueShop.Components;
 using WoueShop.Controllers;
 using WoueShop.Data;
@@ -66,6 +67,8 @@ builder.Services.RegisterAdmin();
 builder.Services.AddApplicationServices();
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<ProductAPIService>();
 
 #endregion
 

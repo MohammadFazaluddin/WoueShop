@@ -1,46 +1,66 @@
-﻿@page "/account/login"
+﻿@rendermode InteractiveServer
+@page "/account/login"
+@using Components.Layout
+@layout BlankLayout
 
 <PageTitle>Woue shop</PageTitle>
 
-<EditForm Model="userModel" OnValidSubmit="LoginInUser" FormName="UserLogin"
-          class="flex item-center mx-auto h-50 border-1 rounded">
-    <DataAnnotationsValidator />
-    <div>
-        
-        <h1>Sign in</h1>
-        <p>to continue to Woue shop</p>
+<EditForm Model="userModel" OnValidSubmit="LoginInUser" FormName="UserLogin" class="h-screen py-8 bg-gray-100">
+    <div class="flex mx-auto my-auto h-[35rem] justify-center border-1 rounded-xl bg-white shadow shadow-gray-400 w-96 p-5">
+        <DataAnnotationsValidator />
+        <div class="grid">
 
-        <div style="color:red;">
-            @errorMessage
-            <ValidationSummary role="alert" />
+            <div class="flex justify-center items-center flex-col mx-auto">
+                <strong>Woue shop</strong>
+                <h1 class="font-bold text-2xl">Sign in</h1>
+                <p>to continue</p>
+            </div>
+
+            <div class="flex flex-col mx-auto gap-8 w-full">
+                <div style="color:red;">
+                    @errorMessage
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900 w-80">
+                        Email
+                    </label>
+                    <InputText type="email" id="email" @bind-Value="@userModel.Email"
+                               placeholder="name@gmail.com"
+                               class="border text-sm rounded-lg block w-full p-2.5 border-gray-300 focus:ring-blue-200 focus:border-blue-200" />
+                    <ValidationMessage For="() => userModel.Email" />
+                </div>
+
+
+                <div>
+
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900 w-80">
+                        Password
+                    </label>
+                    <InputText id="password" type="password" @bind-Value="@userModel.Password"
+                               placeholder="password"
+                               class="border text-sm rounded-lg block w-full p-2.5 border-gray-300 focus:ring-blue-200 focus:border-blue-200" />
+                    <ValidationMessage For="() => userModel.Password" />
+                </div>
+
+
+                <div class="flex items-center mb-4">
+                    <InputCheckbox id="remember" @bind-Value="@userModel.RememberMe" 
+                    class="w-4 h-4  text-blue-600 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                    <label for="remember"
+                        class="ms-2 text-sm font-medium text-gray-900" >
+                        Remember me
+                    </label>
+                </div>
+
+
+                <div>
+                    <button class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Sign In
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <label for="email">
-                Email
-                <InputText id="email" @bind-Value="@userModel.Email" />
-                <ValidationMessage For="() => userModel.Email" />
-            </label>
-        </div>
-
-        <div>
-            <label for="password">
-                Password
-                <InputText id="password" type="password" @bind-Value="@userModel.Password" />
-                <ValidationMessage For="() => userModel.Password" />
-            </label>
-        </div>
-
-        <div>
-            <label>
-                <InputCheckbox @bind-Value="@userModel.RememberMe" />
-                Remember me
-            </label>
-        </div>
-
-        <div>
-            <button>Sign In</button>
-        </div>
     </div>
-
 </EditForm>

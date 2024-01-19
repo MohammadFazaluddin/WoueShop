@@ -28,7 +28,7 @@ namespace WoueShop.Components.Pages
         private string? ReturnUrl { get; set; } = "/";
 
         [CascadingParameter]
-        HttpContext HttpContext { get; set; }
+        HttpContext? HttpContext { get; set; }
 
         [SupplyParameterFromForm]
         UserLoginModel userModel { get; set; } = new();
@@ -37,7 +37,7 @@ namespace WoueShop.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            if (HttpMethods.IsGet(HttpContext.Request.Method))
+            if (HttpMethods.IsGet(HttpContext?.Request.Method))
             {
                 await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
             }

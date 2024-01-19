@@ -1,10 +1,8 @@
 ﻿@page "/"
-@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+@rendermode InteractiveAuto
 
-Hello world
 @if (products != null)
 {
-    <div>Hii.....</div>
     if (products.Any())
     {
         <ul>
