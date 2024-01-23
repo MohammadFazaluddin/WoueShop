@@ -48,3 +48,8 @@
 
 # 20/01/2024 
 - Added Ui design for login page.
+
+# 22/01/2024 
+- Integrated Tailwind Css package for UI.
+- UI updated for Product's page.
+- Login Error headers are read-only fixed.

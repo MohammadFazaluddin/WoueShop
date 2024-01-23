@@ -3,31 +3,53 @@
 @attribute [Authorize]
 
 <PageTitle>Product</PageTitle>
-<h1>Product Entry</h1>
 
 <AuthorizeView>
-    <EditForm Model="@EditModel" OnValidSubmit="HandleSubmit" Context="productform">
-        <div>
-            <div>
-                <label for="name">Name</label>
-                <InputText id="name" @bind-Value="@EditModel.Name" />
+
+    <h1 class="font-bold py-2.5">Product Entry</h1>
+
+    <EditForm Model="@EditModel" OnValidSubmit="HandleSubmit" Context="productform" class="m-2">
+        <div class="w-full m-auto">
+            <DataAnnotationsValidator />
+            <div class="m-auto">
+                <div>
+                    <label for="name" class="block text-sm font-medium leading-6 text-gray-900 w-80">Name</label>
+                    <InputText id="name" @bind-Value="@EditModel.Name"
+                               class="border text-sm rounded-lg block w-full p-2.5 border-gray-300 focus:ring-blue-200 focus:border-blue-200" />
+                    <ValidationMessage For="() => EditModel.Name" />
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium leading-6 text-gray-900 w-80">Description</label>
+                    <InputTextArea id="description" @bind-Value="@EditModel.Description"
+                                   class="border text-sm rounded-lg block w-full p-2.5 border-gray-300 focus:ring-blue-200 focus:border-blue-200" />
+                    <ValidationMessage For="() => EditModel.Description" />
+                </div>
+                <div>
+                    <label for="price" class="block text-sm font-medium leading-6 text-gray-900 w-80">Price</label>
+                    <InputNumber id="price" @bind-Value="@EditModel.Price"
+                                 class="border text-sm rounded-lg block w-full p-2.5 border-gray-300 focus:ring-blue-200 focus:border-blue-200" />
+                    <ValidationMessage For="() => EditModel.Price" />
+                </div>
+                <div>
+                    <label for="dis-price" class="block text-sm font-medium leading-6 text-gray-900 w-80">Discounted price</label>
+                    <InputNumber id="dis-price" @bind-Value="@EditModel.DiscountedPrice"
+                                 class="border text-sm rounded-lg block w-full p-2.5 border-gray-300 focus:ring-blue-200 focus:border-blue-200" />
+                    <ValidationMessage For="() => EditModel.DiscountedPrice" />
+                </div>
             </div>
-            <div>
-                <label for="description">Description</label>
-                <InputTextArea id="description" @bind-Value="@EditModel.Description" />
+            <div class="float-right py-8 gap-4">
+                <NavLink href="/">
+                    <button type="button"
+                            class="text-black font-medium rounded-full text-sm px-5 py-2.5 hover:bg-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-300 text-center me-2 mb-2">
+                        Cancel
+                    </button>
+                </NavLink>
+                <button type="submit"
+                        class="text-white bg-blue-700 font-medium rounded-full text-sm px-5 py-2.5 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Add
+                </button>
+
             </div>
-            <div>
-                <label for="price">Price</label>
-                <InputNumber id="price" @bind-Value="@EditModel.Price" />
-            </div>
-            <div>
-                <label for="dis-price">Discounted price</label>
-                <InputNumber id="dis-price" @bind-Value="@EditModel.DiscountedPrice" />
-            </div>
-        </div>
-        <div>
-            <button type="button">cancel</button>
-            <button type="submit">Add</button>
         </div>
     </EditForm>
 
