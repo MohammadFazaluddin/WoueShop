@@ -5,15 +5,10 @@
 {
     if (products.Any())
     {
-        <ul>
-            
-            @foreach (var product in products)
-            {
-                <li>
-                    @product.Name - <s>$ @product.Price </s> $ @product.DiscountedPrice
-                </li>
-            }
-        </ul>
+        @foreach (var product in products)
+        {
+            <ProductCard Title="@product.Name" Price="@product.Price" />
+        }
     }
     else
     {
