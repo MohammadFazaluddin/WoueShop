@@ -1,19 +1,25 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="max-w-screen-xl mx-auto">
-    <div>
-        <MainHeader />
+<div class="bg-white text-gray-600 dark:bg-gray-900 dark:text-white h-screen w-screen">
+    <div class="max-w-screen-xl mx-auto">
+        <header>
+            <MainHeader />
+        </header>
+
+        <main class="mx-auto max-w-screen-lg mb-auto">
+            <article>
+                @Body
+            </article>
+        </main>
+
+        <div id="blazor-error-ui">
+            An unhandled error has occurred.
+            <a href="" class="reload">Reload</a>
+            <a class="dismiss">🗙</a>
+        </div>
+
+        <footer class="fixed bottom-0">
+            <MainFooter />
+        </footer>
     </div>
-
-    <main class="mx-auto max-w-screen-lg">
-        <article>
-            @Body
-        </article>
-    </main>
-</div>
-
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
 </div>
