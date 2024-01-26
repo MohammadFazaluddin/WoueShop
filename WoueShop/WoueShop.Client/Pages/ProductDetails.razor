@@ -1,0 +1,14 @@
+﻿@page "/product/{id:Guid}"
+@rendermode InteractiveWebAssembly
+
+@if (product is not null)
+{
+    <h1>@product.Name</h1>
+    <p>@product.Price</p>
+}
+else
+{
+    <center>
+        <p>Not available</p>
+    </center>
+}

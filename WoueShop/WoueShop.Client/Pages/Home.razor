@@ -1,21 +1,25 @@
 ﻿@page "/"
 @rendermode InteractiveAuto
 
-@if (products != null)
-{
-    if (products.Any())
+<div class="grid grid-cols-5 gap-3">
+    @if (products != null)
     {
-        @foreach (var product in products)
+        if (products.Any())
         {
-            <ProductCard Title="@product.Name" Price="@product.Price" />
+            @foreach (var product in products)
+            {
+                <div class="col-1">
+                    <ProductCard ProductId="@product.Id" Title="@product.Name" Price="@product.Price" />
+                </div>
+            }
+        }
+        else
+        {
+            <div>No products</div>
         }
     }
     else
     {
-        <div>No products</div>
+        <div>Not found</div>
     }
-}
-else
-{
-    <div>Not found</div>
-}
+</div>

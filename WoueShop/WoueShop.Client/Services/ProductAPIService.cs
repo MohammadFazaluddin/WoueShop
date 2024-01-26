@@ -1,27 +1,31 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using WoueShop.Shared.ViewModels;
 
 namespace WoueShop.Client.Services
 {
     public class ProductAPIService
     {
-        private readonly HttpClient httpClient;
+        private readonly HttpClient _httpClient;
 
         public ProductAPIService(HttpClient httpClient)
         {
-            this.httpClient = httpClient;
+            this._httpClient = httpClient;
         }
 
         public async Task<IEnumerable<ProductViewModel>?> GetAll()
         {
-            var result = await httpClient.GetFromJsonAsync<IEnumerable<ProductViewModel>>("products");
+            var result = await _httpClient.GetFromJsonAsync<IEnumerable<ProductViewModel>>("products");
 
             return result;
         }
 
-        public Task<ProductViewModel?> GetById(Guid id)
+        public async Task<ProductViewModel?> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var result = await _httpClient.GetFromJsonAsync<ProductViewModel>($"products/{id}");
+
+            return result;
         }
 
     }
