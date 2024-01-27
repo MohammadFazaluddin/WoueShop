@@ -57,3 +57,8 @@
 ## 26/01/2024 
 - Working on product details page.
 - The Products card UI has been updated (looks good for now).
+
+## 28/01/2024 
+- Added carousel for the hero section
+- working on Home page UI. 
+- fixed some of the Styling on navbar and landing page.

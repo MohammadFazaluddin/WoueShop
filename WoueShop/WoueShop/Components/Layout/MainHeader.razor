@@ -2,13 +2,14 @@
     <h1 class="text-xl text-gray-800 font-bold dark:text-white" title="Woue Shop"><a href="/">Woue Shop</a></h1>
 
     <div class="flex item-center">
-        <div class="flex items-center mx-3 hover:outline hover:outline-1 rounded-lg outline-gray-500 px-1 focus:outline focus:outline-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pt-0.5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="flex items-center mx-3  rounded-lg outline-gray-500 px-1 focus:outline focus:outline-1 dark:focus:bg-gray-600:">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pt-0.5 text-gray-600 absolute ml-2"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <input type="text" 
-                class="ml-2 outline-none bg-transparent text-sm px-2.5 focus:border-gray-200 focus:ring-blue-200" 
-                name="search" id="search" placeholder="Search..." />
+            <input type="text"
+                   class="pl-8 outline-none h-6 bg-transparent text-gray-400 text-sm px-2.5 rounded-lg hover:outline hover:outline-1 focus:w-80 ease-in-out duration-500 dark:focus:bg-gray-700 focus:border-gray-200 focus:ring-blue-200 dark:focus:border-gray-300 dark:focus:ring-blue-600"
+                   name="search" id="search" placeholder="Search..." />
         </div>
         <ul class="flex item-center space-x-6 py-1">
             <li class="font-semibold text-gray-700 dark:text-white">Home</li>
@@ -22,22 +23,22 @@
         </div>
 
         @* <DropDown> *@
-            <AuthorizeView>
-                <Authorized>
-                    <div>
-                        <form action="api/auth/logout" method="post">
-                            <AntiforgeryToken />
-                            <input type="hidden" name="ReturnURL" value="@currentUrl" />
-                            <button type="submit">Logout</button>
-                        </form>
-                    </div>
-                </Authorized>
-                <NotAuthorized>
-                    <div>
-                        <a href="/account/login?ReturnUrl=">Login</a>
-                    </div>
-                </NotAuthorized>
-            </AuthorizeView>
+        <AuthorizeView>
+            <Authorized>
+                <div>
+                    <form action="api/auth/logout" method="post">
+                        <AntiforgeryToken />
+                        <input type="hidden" name="ReturnURL" value="@currentUrl" />
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </Authorized>
+            <NotAuthorized>
+                <div>
+                    <a href="/account/login?ReturnUrl=">Login</a>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
         @* </DropDown> *@
     </div>
 </nav>
