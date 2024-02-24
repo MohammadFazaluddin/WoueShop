@@ -3,14 +3,14 @@
 
 <HeroCarousel />
 
-<div class="grid grid-cols-5 gap-3">
+<div class="grid grid-cols-5 gap-4">
     @if (products != null)
     {
         if (products.Any())
         {
             @foreach (var product in products)
             {
-                <div class="col-1">
+                <div class="col-1 w-80">
                     <ProductCard ProductId="@product.Id" Title="@product.Name" Price="@product.Price" />
                 </div>
             }
