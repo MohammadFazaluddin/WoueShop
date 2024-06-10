@@ -10,12 +10,7 @@ namespace WoueShop.Client.Components
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await GetFlickity();
         }
 
-        async Task GetFlickity()
-        {
-            await JsRuntime!.InvokeVoidAsync("startFlickity");
-        }
     }
 }
