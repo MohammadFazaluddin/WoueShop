@@ -11,6 +11,7 @@ namespace WoueShop.Components.Pages
         [Parameter]
         public ProductModel Model { get; set; }
 
+
         [Inject]
         IProductsRepository? ProductRepository { get; set; }
 
